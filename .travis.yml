@@ -8,4 +8,4 @@ jdk:
 install: mvn install -DskipTests=true -Dgpg.skip=true;
 
 # Run unit and integration tests
-script: mvn verify -B -q
+script: mvn clean verify -B -q
