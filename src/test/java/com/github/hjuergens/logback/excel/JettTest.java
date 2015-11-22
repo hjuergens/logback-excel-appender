@@ -1,8 +1,10 @@
-package net.sf.hajuergens;
+package com.github.hjuergens.logback.excel;
 
+import com.github.hjuergens.IntegrationCategory;
 import net.sf.jett.transform.ExcelTransformer;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,6 +13,7 @@ import java.util.Map;
 /**
  * @author Hartmut Jürgens
  */
+@Category(IntegrationCategory.class)
 public class JettTest {
 
     private static ExcelTransformer transformer = new ExcelTransformer();
@@ -29,10 +32,9 @@ public class JettTest {
         map.put("trueValue", "is true");
         map.put("falseValue", "is false");
 
-        transformer.transform(
-                "target/test-classes/templates/RichTextStringUtilTests.xls",
-                "target/test-classes/templates/Report.xls",
-                map);
+        String inFilename = "target/test-classes/templates/RichTextStringUtilTests.xls";
+        String outFilename = "target/test-classes/templates/Report.xls";
+        transformer.transform(inFilename, outFilename, map);
     }
 
     /**
@@ -49,10 +51,9 @@ public class JettTest {
         map.put("trueValue", "is true");
         map.put("falseValue", "is false");
 
-        transformer.transform(
-                "target/test-classes/templates/RichTextStringUtilTests.xlsx",
-                "target/test-classes/templates/Report.xlsx",
-                map);
+        String inFilename = "target/test-classes/templates/RichTextStringUtilTests.xlsx";
+        String outFilename = "target/test-classes/templates/Report.xlsx";
+        transformer.transform(inFilename, outFilename, map);
     }
 
 }
