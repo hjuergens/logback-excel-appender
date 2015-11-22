@@ -1,0 +1,27 @@
+<configuration>
+
+    <appender name="ExcelAppender" class="com.github.hjuergens.logback.excel.ExcelAppender">
+        <encoder class="com.github.hjuergens.logback.Excel.encoding.PatternLayoutExcelMessageEncoder">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </layout>
+        </encoder>
+
+        <file>${USER_HOME}/myApp.log</file>
+        <sheetName>example01</sheetName>
+    </appender>
+
+    <logger name="LogbackIntegrationIT" additivity="false" level="info">
+        <appender-ref ref="ExcelAppender"/>
+    </logger>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="warn">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
